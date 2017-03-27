@@ -43,9 +43,9 @@ def select_download(fis):
     for part in input_numbers.split(','):
         x = part.split('-')
         if len(x) == 1:
-            selected_numbers += [int(x[0])]
+            selected_numbers = [int(x[0]) - 1]
         elif len(x) == 2:
-            selected_numbers += range(int(x[0]), int(x[1])+1)
+            selected_numbers = range(int(x[0]) - 1, int(x[1]))
         else:
             print("Error, your input seems illegal." + str(len(x)))
             return None
@@ -53,7 +53,7 @@ def select_download(fis):
     # ensure no duplicate numbers
     selected_numbers = list(set(selected_numbers))
 
-    selected_fis = [fis[i-1] for i in selected_numbers]
+    selected_fis = [fis[i] for i in selected_numbers]
 
     print("Download list:")
     counter = 1
